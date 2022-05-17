@@ -5,7 +5,7 @@ namespace Payslip.Api.Extensions
 {
     public static class HealthChecksExtensions
     {
-        public static IServiceCollection AddHealthCheckSMiddleware<T>(this IServiceCollection service) where T : DbContext
+        public static IServiceCollection AddHealthChecksMiddleware<T>(this IServiceCollection service) where T : DbContext
         {
             service.AddHealthChecks()
                 .AddDbContextCheck<T>();
