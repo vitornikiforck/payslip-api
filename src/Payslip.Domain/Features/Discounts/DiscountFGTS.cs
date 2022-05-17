@@ -2,7 +2,10 @@
 {
     public class DiscountFGTS : Discount
     {
-        const int fgtsPercentageValue = 8;
-        protected override decimal Calculate(decimal grossSalary) => grossSalary * fgtsPercentageValue / 100;
+        public override void Calculate(decimal grossSalary)
+        {
+            Aliquot = 8;
+            Value = grossSalary * Aliquot / 100;
+        }
     }
 }

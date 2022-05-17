@@ -2,6 +2,8 @@
 {
     public abstract partial class Discount
     {
-        protected abstract decimal Calculate(decimal grossSalary);
+        public decimal Value { get; set; }
+        public decimal Aliquot { get; set; }
+        public abstract void Calculate(decimal grossSalary);
     }
 }

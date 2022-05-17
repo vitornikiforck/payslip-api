@@ -2,30 +2,30 @@
 {
     public class DiscountINSS : Discount
     {
-        protected override decimal Calculate(decimal grossSalary) => grossSalary * GetAliquot(grossSalary) / 100;
-
-        private decimal GetAliquot(decimal grossSalary)
+        public override void Calculate(decimal grossSalary) 
         {
-            decimal aliquot = 0.0m;
+            SetAliquot(grossSalary);
+            Value = grossSalary * Aliquot / 100; 
+        }
 
+        private void SetAliquot(decimal grossSalary)
+        {
             if (grossSalary <= 1045.00m)
             {
-                aliquot = 7.5m;
+                Aliquot = 7.5m;
             }
             else if (grossSalary <= 2089.60m)
             {
-                aliquot = 9.0m;
+                Aliquot = 9.0m;
             }
             else if (grossSalary <= 3134.40m)
             {
-                aliquot = 12.0m;
+                Aliquot = 12.0m;
             }
             else
             {
-                aliquot = 14.0m;
+                Aliquot = 14.0m;
             }
-
-            return aliquot;
         }
     }
 }
