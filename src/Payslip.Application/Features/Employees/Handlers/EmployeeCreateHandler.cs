@@ -6,7 +6,7 @@ using Payslip.Domain.Features.Employees;
 
 namespace Payslip.Application.Features.Employees.Handlers
 {
-    public class EmployeeCreateHandler : IRequestHandler<EmployeeRegisterCommand, Result<Exception, Guid>>
+    public record EmployeeCreateHandler : IRequestHandler<EmployeeRegisterCommand, Result<Exception, Guid>>
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IMapper _mapper;
