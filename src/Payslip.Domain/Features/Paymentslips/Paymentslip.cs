@@ -6,16 +6,17 @@ namespace Payslip.Domain.Features.Paymentslips
 {
     public class Paymentslip
     {
-        private decimal _discountINSS { get; set; }
-        private decimal _discountIRPF { get; set; }
-        private decimal _discountFGTS { get; set; }
-        private decimal _discountHealthPlan { get; set; }
-        private decimal _discountDentalPlan { get; set; }
-        private decimal _discountTransportationVoucher { get; set; }
+        private decimal _discountINSS;
+        private decimal _discountIRRF;
+        private decimal _discountFGTS;
+        private decimal _discountHealthPlan;
+        private decimal _discountDentalPlan;
+        private decimal _discountTransportationVoucher;
         public int ReferenceMonth { get; private set; }
         public List<Launch> Launches { get; private set; }
         public decimal GrossSalary { get; private set; }
         public decimal TotalDiscountValue { get; private set; }
+        public decimal TotalDiscountValueNegative { get; private set; }
         public decimal NetSalary { get; private set; }
         public Employee Employee { get; private set; }
 
@@ -24,27 +25,18 @@ namespace Payslip.Domain.Features.Paymentslips
             Launches = new List<Launch>();
             ReferenceMonth = DateTime.UtcNow.Month;
             Employee = employee;
+            _discountINSS = new DiscountINSS(Employee.GrossSalary).Value;
+            _discountIRRF = new DiscountIRRF(Employee.GrossSalary).Value;
+            _discountINSS = new DiscountFGTS(Employee.GrossSalary).Value;
             ApplyDiscounts();
             SetNetSalary();
             GenerateLaunches();
+            TotalDiscountValueNegative = Decimal.Negate(TotalDiscountValue);
         }
 
         private void ApplyDiscounts()
         {
-            var discountINSS = new DiscountINSS();
-            discountINSS.Calculate(Employee.GrossSalary);
-
-            var discountIRPF = new DiscountIRPF();
-            discountIRPF.Calculate(Employee.GrossSalary);
-
-            var discountFGTS = new DiscountFGTS();
-            discountFGTS.Calculate(Employee.GrossSalary);
-
-            _discountINSS = discountINSS.Value;
-            _discountIRPF = discountIRPF.Value;
-            _discountFGTS = discountFGTS.Value;
-
-            TotalDiscountValue = discountINSS.Value + discountIRPF.Value + discountFGTS.Value;
+            TotalDiscountValue = _discountINSS + _discountIRRF + _discountINSS;
 
             if (Employee.HealthPlan)
             {
@@ -72,47 +64,12 @@ namespace Payslip.Domain.Features.Paymentslips
 
         private void GenerateLaunches()
         {
-            Launches.Add(new Launch()
-            {
-                Type = LaunchType.Discount,
-                Description = "INSS",
-                Value = _discountINSS
-            });
-
-            Launches.Add(new Launch()
-            {
-                Type = LaunchType.Discount,
-                Description = "IRPF",
-                Value = _discountIRPF
-            });
-
-            Launches.Add(new Launch()
-            {
-                Type = LaunchType.Discount,
-                Description = "FGTS",
-                Value = _discountFGTS
-            });
-
-            Launches.Add(new Launch()
-            {
-                Type = LaunchType.Discount,
-                Description = "Plano de Saúde",
-                Value = _discountHealthPlan
-            });
-
-            Launches.Add(new Launch()
-            {
-                Type = LaunchType.Discount,
-                Description = "Plano Dental",
-                Value = _discountDentalPlan
-            });
-
-            Launches.Add(new Launch()
-            {
-                Type = LaunchType.Discount,
-                Description = "Vale Transporte",
-                Value = _discountTransportationVoucher
-            });
+            Launches.Add(new Launch(LaunchType.Discount, _discountINSS, "INSS"));
+            Launches.Add(new Launch(LaunchType.Discount, _discountIRRF, "IRPF"));
+            Launches.Add(new Launch(LaunchType.Discount, _discountFGTS, "FGTS"));
+            Launches.Add(new Launch(LaunchType.Discount, _discountHealthPlan, "Plano de Saúde"));
+            Launches.Add(new Launch(LaunchType.Discount, _discountDentalPlan, "Plano Dental"));
+            Launches.Add(new Launch(LaunchType.Discount, _discountTransportationVoucher, "Vale Transporte"));
         }
     }
 }

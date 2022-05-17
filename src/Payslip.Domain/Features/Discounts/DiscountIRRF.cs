@@ -1,8 +1,8 @@
 ﻿namespace Payslip.Domain.Features.Discounts
 {
-    public class DiscountIRPF : Discount
+    public class DiscountIRRF : Discount
     {
-        public override void Calculate(decimal grossSalary)
+        public DiscountIRRF(decimal grossSalary)
         {
             SetAliquot(grossSalary);
             SetDiscountRoof(grossSalary);

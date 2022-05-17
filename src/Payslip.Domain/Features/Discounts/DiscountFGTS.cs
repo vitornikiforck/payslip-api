@@ -2,7 +2,7 @@
 {
     public class DiscountFGTS : Discount
     {
-        public override void Calculate(decimal grossSalary)
+        public DiscountFGTS(decimal grossSalary)
         {
             Aliquot = 8;
             Value = grossSalary * Aliquot / 100;

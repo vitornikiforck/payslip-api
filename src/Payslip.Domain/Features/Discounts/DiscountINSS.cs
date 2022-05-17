@@ -2,10 +2,10 @@
 {
     public class DiscountINSS : Discount
     {
-        public override void Calculate(decimal grossSalary) 
+        public DiscountINSS(decimal grossSalary)
         {
             SetAliquot(grossSalary);
-            Value = grossSalary * Aliquot / 100; 
+            Value = grossSalary * Aliquot / 100;
         }
 
         private void SetAliquot(decimal grossSalary)

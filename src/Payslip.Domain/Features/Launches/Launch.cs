@@ -2,8 +2,15 @@
 {
     public class Launch
     {
-        public LaunchType Type { get; set; }
-        public decimal Value { get; set; }
-        public string Description { get; set; }
+        public Launch(LaunchType launchType, decimal value, string description)
+        {
+            Type = launchType;
+            Value = value;
+            Description = description;
+        }
+
+        public LaunchType Type { get; private set; }
+        public decimal Value { get; private set; }
+        public string Description { get; private set; }
     }
 }
