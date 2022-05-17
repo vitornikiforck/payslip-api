@@ -29,7 +29,7 @@ namespace Payslip.Application.Features.Payslips.Handlers
 
             var paymentSlip = new Paymentslip(employee);
 
-            throw new NotImplementedException();
+            return paymentSlip;
         }
     }
 }
