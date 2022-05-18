@@ -2,6 +2,8 @@
 {
     public class DiscountIRRF : Discount
     {
+        public decimal Aliquot { get; set; }
+
         public DiscountIRRF(decimal grossSalary)
         {
             SetAliquot(grossSalary);
@@ -18,9 +20,13 @@
             {
                 Aliquot = 7.5m;
             }
+            else if (grossSalary <= 3751.05m)
+            {
+                Aliquot = 15m;
+            }
             else if (grossSalary <= 4664.68m)
             {
-                Aliquot = 22;
+                Aliquot = 22.5m;
             }
             else
             {

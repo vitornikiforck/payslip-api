@@ -4,8 +4,7 @@
     {
         public DiscountFGTS(decimal grossSalary)
         {
-            Aliquot = 8;
-            Value = grossSalary * Aliquot / 100;
+            Value = grossSalary * 8 / 100;
         }
     }
 }

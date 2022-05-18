@@ -27,40 +27,22 @@ namespace Payslip.Domain.Features.Paymentslips
             Employee = employee;
             _discountINSS = new DiscountINSS(Employee.GrossSalary).Value;
             _discountIRRF = new DiscountIRRF(Employee.GrossSalary).Value;
-            _discountINSS = new DiscountFGTS(Employee.GrossSalary).Value;
+            _discountFGTS = new DiscountFGTS(Employee.GrossSalary).Value;
             ApplyDiscounts();
-            SetNetSalary();
+            NetSalary = GetNetSalary();
             GenerateLaunches();
             TotalDiscountValueNegative = Decimal.Negate(TotalDiscountValue);
         }
 
         private void ApplyDiscounts()
         {
-            TotalDiscountValue = _discountINSS + _discountIRRF + _discountINSS;
-
-            if (Employee.HealthPlan)
-            {
-                _discountHealthPlan = 10;
-                TotalDiscountValue += _discountHealthPlan;
-            }
-
-            if (Employee.DentalPlan)
-            {
-                _discountDentalPlan = 5;
-                TotalDiscountValue += _discountDentalPlan;
-            }
-
-            if (Employee.TransportantionVoucher && Employee.GrossSalary >= 1500)
-            {
-                _discountTransportationVoucher = Employee.GrossSalary * 6 / 100;
-                TotalDiscountValue += _discountTransportationVoucher;
-            }
+            TotalDiscountValue = _discountINSS + _discountIRRF + _discountFGTS;
+            TotalDiscountValue += new DiscountHealthPlan(Employee.HealthPlan).Value;
+            TotalDiscountValue += new DiscountDentalPlan(Employee.DentalPlan).Value;
+            TotalDiscountValue += new DiscountTransportationVoucher(Employee.GrossSalary, Employee.TransportantionVoucher).Value;
         }
 
-        private void SetNetSalary()
-        {
-            NetSalary = Employee.GrossSalary - TotalDiscountValue;
-        }
+        private decimal GetNetSalary() => Employee.GrossSalary - TotalDiscountValue;
 
         private void GenerateLaunches()
         {

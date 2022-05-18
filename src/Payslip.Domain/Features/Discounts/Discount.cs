@@ -3,6 +3,5 @@
     public abstract partial class Discount
     {
         public decimal Value { get; set; }
-        public decimal Aliquot { get; set; }
     }
 }

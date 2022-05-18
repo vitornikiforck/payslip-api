@@ -2,6 +2,8 @@
 {
     public class DiscountINSS : Discount
     {
+        public decimal Aliquot { get; set; }
+
         public DiscountINSS(decimal grossSalary)
         {
             SetAliquot(grossSalary);

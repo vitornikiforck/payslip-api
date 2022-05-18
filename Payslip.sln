@@ -13,19 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Building Blocks", "5 - Building Blocks", "{9B3393CB-1998-4D4A-8D71-D379C8C9BC44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Api", "src\Payslip.Api\Payslip.Api.csproj", "{59195B96-7841-4D9A-8B2E-32B326C5F8C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Api", "src\Payslip.Api\Payslip.Api.csproj", "{59195B96-7841-4D9A-8B2E-32B326C5F8C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Application", "src\Payslip.Application\Payslip.Application.csproj", "{2C659D11-7A6E-4709-9F7B-07CD910CFD24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Application", "src\Payslip.Application\Payslip.Application.csproj", "{2C659D11-7A6E-4709-9F7B-07CD910CFD24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Domain", "src\Payslip.Domain\Payslip.Domain.csproj", "{E01B15DA-5305-4933-A107-C895A17132FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Domain", "src\Payslip.Domain\Payslip.Domain.csproj", "{E01B15DA-5305-4933-A107-C895A17132FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Infra.Data", "src\Payslip.Infra.Data\Payslip.Infra.Data.csproj", "{B5FBC52C-6E18-4CE1-9D6D-888B48A92031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Infra.Data", "src\Payslip.Infra.Data\Payslip.Infra.Data.csproj", "{B5FBC52C-6E18-4CE1-9D6D-888B48A92031}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Infra", "src\Payslip.Infra\Payslip.Infra.csproj", "{727E7BD7-FDA3-4951-97AB-FE73F4438A98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Infra", "src\Payslip.Infra\Payslip.Infra.csproj", "{727E7BD7-FDA3-4951-97AB-FE73F4438A98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Core", "src\Payslip.Core\Payslip.Core.csproj", "{6622349C-8F5E-4B7A-BBD3-B1E5CE676305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Core", "src\Payslip.Core\Payslip.Core.csproj", "{6622349C-8F5E-4B7A-BBD3-B1E5CE676305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Extensions", "src\Payslip.Extensions\Payslip.Extensions.csproj", "{0A0F84C0-D740-4C44-ABA5-9D6363466FA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Extensions", "src\Payslip.Extensions\Payslip.Extensions.csproj", "{0A0F84C0-D740-4C44-ABA5-9D6363466FA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{DCCB1C0C-6640-48BD-84EC-9DA0A2E3CB4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Domain.Tests", "Payslip.Domain.Tests\Payslip.Domain.Tests.csproj", "{C08A79C5-2DEF-4C61-A057-381021763FC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{0A0F84C0-D740-4C44-ABA5-9D6363466FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A0F84C0-D740-4C44-ABA5-9D6363466FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A0F84C0-D740-4C44-ABA5-9D6363466FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C08A79C5-2DEF-4C61-A057-381021763FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C08A79C5-2DEF-4C61-A057-381021763FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C08A79C5-2DEF-4C61-A057-381021763FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C08A79C5-2DEF-4C61-A057-381021763FC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +81,7 @@ Global
 		{727E7BD7-FDA3-4951-97AB-FE73F4438A98} = {D48B82A8-00BD-4E5C-BA57-DC18F8F39861}
 		{6622349C-8F5E-4B7A-BBD3-B1E5CE676305} = {9B3393CB-1998-4D4A-8D71-D379C8C9BC44}
 		{0A0F84C0-D740-4C44-ABA5-9D6363466FA0} = {9B3393CB-1998-4D4A-8D71-D379C8C9BC44}
+		{C08A79C5-2DEF-4C61-A057-381021763FC8} = {DCCB1C0C-6640-48BD-84EC-9DA0A2E3CB4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D4C256D-B907-4D88-AA62-E20EAB7217AA}
