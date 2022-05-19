@@ -3,7 +3,6 @@ using Moq;
 using NUnit.Framework;
 using Payslip.Domain.Features.Discounts;
 using Payslip.Domain.Features.Employees;
-using Payslip.Domain.Features.Launches;
 using Payslip.Domain.Features.Paymentslips;
 using System;
 
@@ -14,6 +13,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
     public class PaymentslipTest
     {
         private Mock<Employee> _employee;
+        private const string _descriptionINSS = "INSS";
+        private const string _descriptionIRRF = "IRRF";
+        private const string _descriptionFGTS = "FGTS";
+        private const string _descriptionHealthPlan = "Plano de Saúde";
+        private const string _descriptionDentalPlan = "Plano Dental";
+        private const string _descriptionTransportationVoucher = "Vale Transporte";
 
         [SetUp]
         public void Setup()
@@ -235,12 +240,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
         }
 
         [Test]
@@ -254,12 +259,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
         }
 
         [Test]
@@ -274,12 +279,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
         }
 
         [Test]
@@ -294,12 +299,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
         }
 
         [Test]
@@ -314,12 +319,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
         }
 
         [Test]
@@ -334,12 +339,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
         }
 
         [Test]
@@ -354,12 +359,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
         }
 
         [Test]
@@ -374,12 +379,138 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+        }
+
+        [Test]
+        public void Launches_ShouldBeGenerateCorrectly_HavingINSSAndFGTSAndHealthDentalPlanDiscount()
+        {
+            //Arrange
+            decimal grossSalary = 1045;
+            _employee.Setup(e => e.GrossSalary).Returns(grossSalary);
+            _employee.Setup(e => e.HealthPlan).Returns(true);
+            _employee.Setup(e => e.DentalPlan).Returns(true);
+
+            //Action
+            var paymentslip = new Paymentslip(_employee.Object);
+
+            //Assert
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+        }
+
+        [Test]
+        public void Launches_ShouldBeGenerateCorrectly_HavingINSSAndFGTSAndHealthPlanTransportationVoucherDiscount()
+        {
+            //Arrange
+            decimal grossSalary = 1500;
+            _employee.Setup(e => e.GrossSalary).Returns(grossSalary);
+            _employee.Setup(e => e.HealthPlan).Returns(true);
+            _employee.Setup(e => e.TransportantionVoucher).Returns(true);
+
+            //Action
+            var paymentslip = new Paymentslip(_employee.Object);
+
+            //Assert
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+        }
+
+        [Test]
+        public void Launches_ShouldBeGenerateCorrectly_HavingINSSAndFGTSAndDentalPlanTransportationVoucherDiscount()
+        {
+            //Arrange
+            decimal grossSalary = 1500;
+            _employee.Setup(e => e.GrossSalary).Returns(grossSalary);
+            _employee.Setup(e => e.DentalPlan).Returns(true);
+            _employee.Setup(e => e.TransportantionVoucher).Returns(true);
+
+            //Action
+            var paymentslip = new Paymentslip(_employee.Object);
+
+            //Assert
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+        }
+
+        [Test]
+        public void Launches_ShouldBeGenerateCorrectly_HavingINSSAndIRRFAndFGTSAndHealthDentalPlanDiscount()
+        {
+            //Arrange
+            decimal grossSalary = 1903.99m;
+            _employee.Setup(e => e.GrossSalary).Returns(grossSalary);
+            _employee.Setup(e => e.HealthPlan).Returns(true);
+            _employee.Setup(e => e.DentalPlan).Returns(true);
+
+            //Action
+            var paymentslip = new Paymentslip(_employee.Object);
+
+            //Assert
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+        }
+
+        [Test]
+        public void Launches_ShouldBeGenerateCorrectly_HavingINSSAndIRRFAndFGTSAndHealthPlanTransportationVoucherDiscount()
+        {
+            //Arrange
+            decimal grossSalary = 1903.99m;
+            _employee.Setup(e => e.GrossSalary).Returns(grossSalary);
+            _employee.Setup(e => e.HealthPlan).Returns(true);
+            _employee.Setup(e => e.TransportantionVoucher).Returns(true);
+
+            //Action
+            var paymentslip = new Paymentslip(_employee.Object);
+
+            //Assert
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+        }
+
+        [Test]
+        public void Launches_ShouldBeGenerateCorrectly_HavingINSSAndIRRFAndFGTSAndDentalPlanTransportationVoucherDiscount()
+        {
+            //Arrange
+            decimal grossSalary = 1903.99m;
+            _employee.Setup(e => e.GrossSalary).Returns(grossSalary);
+            _employee.Setup(e => e.HealthPlan).Returns(true);
+            _employee.Setup(e => e.TransportantionVoucher).Returns(true);
+
+            //Action
+            var paymentslip = new Paymentslip(_employee.Object);
+
+            //Assert
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
         }
 
         [Test]
@@ -396,12 +527,12 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             var paymentslip = new Paymentslip(_employee.Object);
 
             //Assert
-            paymentslip.Launches.Find(l => l.Description == "INSS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "FGTS")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "IRRF")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Vale Transporte")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano de Saúde")?.Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == "Plano Dental")?.Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
         }
     }
 }
