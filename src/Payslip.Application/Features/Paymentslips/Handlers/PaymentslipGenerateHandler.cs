@@ -5,7 +5,7 @@ using Payslip.Core.Results;
 using Payslip.Domain.Features.Employees;
 using Payslip.Domain.Features.Paymentslips;
 
-namespace Payslip.Application.Features.Payslips.Handlers
+namespace Payslip.Application.Features.Paymentslips.Handlers
 {
     public record PaymentslipGenerateHandler : IRequestHandler<PaymentslipGenerateQuery, Result<Exception, Paymentslip>>
     {
