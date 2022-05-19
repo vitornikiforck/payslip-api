@@ -35,19 +35,22 @@ namespace Payslip.Application.Features.Employees.Commands
                 .WithMessage("Sobrenome não deve ultrapassar 100 caracteres.");
 
             RuleFor(x => x.Document)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("CPF deve ser informado.")
                 .Must(x => DocumentValidator.ValidateCpf(x))
                 .WithMessage("CPF está inválido.");
 
             RuleFor(x => x.GrossSalary)
-                .ScalePrecision(2, 6)
+                .ScalePrecision(2, 8)
                 .WithMessage("Informe um salário válido.");
 
             RuleFor(x => x.Department)
             .NotNull()
             .NotEmpty()
-            .WithMessage("Sobrenome deve ser informado.")
+            .WithMessage("Setor deve ser informado.")
             .MaximumLength(100)
-            .WithMessage("Sobrenome não deve ultrapassar 100 caracteres.");
+            .WithMessage("Setor não deve ultrapassar 100 caracteres.");
         }
     }
 }
