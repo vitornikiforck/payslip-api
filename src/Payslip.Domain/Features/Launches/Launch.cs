@@ -1,12 +1,14 @@
-﻿namespace Payslip.Domain.Features.Launches
+﻿using Payslip.Domain.Features.Discounts;
+
+namespace Payslip.Domain.Features.Launches
 {
     public class Launch
     {
-        public Launch(LaunchType launchType, decimal value, string description)
+        public Launch(LaunchType launchType, Discount discount)
         {
             Type = launchType;
-            Value = value;
-            Description = description;
+            Value = discount.Value;
+            Description = discount.Description;
         }
 
         public LaunchType Type { get; private set; }

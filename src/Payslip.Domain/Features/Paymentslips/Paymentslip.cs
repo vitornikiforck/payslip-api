@@ -6,12 +6,12 @@ namespace Payslip.Domain.Features.Paymentslips
 {
     public class Paymentslip
     {
-        private decimal _discountINSS;
-        private decimal _discountIRRF;
-        private decimal _discountFGTS;
-        private decimal _discountHealthPlan;
-        private decimal _discountDentalPlan;
-        private decimal _discountTransportationVoucher;
+        private DiscountINSS _discountINSS;
+        private DiscountIRRF _discountIRRF;
+        private DiscountFGTS _discountFGTS;
+        private DiscountHealthPlan _discountHealthPlan;
+        private DiscountDentalPlan _discountDentalPlan;
+        private DiscountTransportationVoucher _discountTransportationVoucher;
         public int ReferenceMonth { get; private set; }
         public List<Launch> Launches { get; private set; }
         public decimal GrossSalary { get; private set; }
@@ -25,33 +25,36 @@ namespace Payslip.Domain.Features.Paymentslips
             Launches = new List<Launch>();
             ReferenceMonth = DateTime.UtcNow.Month;
             Employee = employee;
-            _discountINSS = new DiscountINSS(Employee.GrossSalary).Value;
-            _discountIRRF = new DiscountIRRF(Employee.GrossSalary).Value;
-            _discountFGTS = new DiscountFGTS(Employee.GrossSalary).Value;
-            ApplyDiscounts();
+            TotalDiscountValue = GetTotalDiscountValue();
+            TotalDiscountValueNegative = GetTotalDiscountNegativeValue();
             NetSalary = GetNetSalary();
             GenerateLaunches();
-            TotalDiscountValueNegative = Decimal.Negate(TotalDiscountValue);
         }
 
-        private void ApplyDiscounts()
+        private decimal GetTotalDiscountValue()
         {
-            TotalDiscountValue = _discountINSS + _discountIRRF + _discountFGTS;
-            TotalDiscountValue += new DiscountHealthPlan(Employee.HealthPlan).Value;
-            TotalDiscountValue += new DiscountDentalPlan(Employee.DentalPlan).Value;
-            TotalDiscountValue += new DiscountTransportationVoucher(Employee.GrossSalary, Employee.TransportantionVoucher).Value;
+            _discountINSS = new DiscountINSS(Employee.GrossSalary);
+            _discountIRRF = new DiscountIRRF(Employee.GrossSalary);
+            _discountFGTS = new DiscountFGTS(Employee.GrossSalary);
+            _discountHealthPlan = new DiscountHealthPlan(Employee.HealthPlan);
+            _discountDentalPlan = new DiscountDentalPlan(Employee.DentalPlan);
+            _discountTransportationVoucher = new DiscountTransportationVoucher(Employee.GrossSalary, Employee.TransportantionVoucher);
+
+            return _discountINSS.Value + _discountIRRF.Value + _discountFGTS.Value + _discountHealthPlan.Value
+                                       + _discountDentalPlan.Value + _discountTransportationVoucher.Value;
         }
 
+        private decimal GetTotalDiscountNegativeValue() => Decimal.Negate(TotalDiscountValue);
         private decimal GetNetSalary() => Employee.GrossSalary - TotalDiscountValue;
 
         private void GenerateLaunches()
         {
-            Launches.Add(new Launch(LaunchType.Discount, _discountINSS, "INSS"));
-            Launches.Add(new Launch(LaunchType.Discount, _discountIRRF, "IRPF"));
-            Launches.Add(new Launch(LaunchType.Discount, _discountFGTS, "FGTS"));
-            Launches.Add(new Launch(LaunchType.Discount, _discountHealthPlan, "Plano de Saúde"));
-            Launches.Add(new Launch(LaunchType.Discount, _discountDentalPlan, "Plano Dental"));
-            Launches.Add(new Launch(LaunchType.Discount, _discountTransportationVoucher, "Vale Transporte"));
+            Launches.Add(new Launch(LaunchType.Discount, _discountINSS));
+            Launches.Add(new Launch(LaunchType.Discount, _discountIRRF));
+            Launches.Add(new Launch(LaunchType.Discount, _discountFGTS));
+            Launches.Add(new Launch(LaunchType.Discount, _discountHealthPlan));
+            Launches.Add(new Launch(LaunchType.Discount, _discountDentalPlan));
+            Launches.Add(new Launch(LaunchType.Discount, _discountTransportationVoucher));
         }
     }
 }

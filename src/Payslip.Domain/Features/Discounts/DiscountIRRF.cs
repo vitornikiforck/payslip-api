@@ -6,6 +6,7 @@
 
         public DiscountIRRF(decimal grossSalary)
         {
+            Description = "IRRF";
             SetAliquot(grossSalary);
             SetDiscountRoof(grossSalary);
         }

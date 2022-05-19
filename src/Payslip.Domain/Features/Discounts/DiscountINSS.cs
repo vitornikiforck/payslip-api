@@ -6,6 +6,7 @@
 
         public DiscountINSS(decimal grossSalary)
         {
+            Description = "INSS";
             SetAliquot(grossSalary);
             Value = grossSalary * Aliquot / 100;
         }

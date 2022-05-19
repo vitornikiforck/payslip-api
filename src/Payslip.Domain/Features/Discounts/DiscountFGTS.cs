@@ -4,6 +4,7 @@
     {
         public DiscountFGTS(decimal grossSalary)
         {
+            Description = "FGTS";
             Value = grossSalary * 8 / 100;
         }
     }

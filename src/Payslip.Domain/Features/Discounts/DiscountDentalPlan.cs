@@ -4,6 +4,7 @@
     {
         public DiscountDentalPlan(bool hasDentalPlan)
         {
+            Description = "Plano Dental";
             if (hasDentalPlan) Value = 5;
         }
     }
