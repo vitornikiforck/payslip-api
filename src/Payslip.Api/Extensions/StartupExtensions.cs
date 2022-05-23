@@ -1,6 +1,4 @@
-﻿using Autofac.Extensions.DependencyInjection;
-
-namespace Payslip.Api.Extensions
+﻿namespace Payslip.Api.Extensions
 {
     public static class StartupExtensions
     {

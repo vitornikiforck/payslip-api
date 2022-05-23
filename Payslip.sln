@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Extensions", "src\P
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{DCCB1C0C-6640-48BD-84EC-9DA0A2E3CB4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Domain.Tests", "Payslip.Domain.Tests\Payslip.Domain.Tests.csproj", "{C08A79C5-2DEF-4C61-A057-381021763FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip.Domain.Tests", "tests\Payslip.Domain.Tests\Payslip.Domain.Tests.csproj", "{C08A79C5-2DEF-4C61-A057-381021763FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Application.Tests", "Payslip.Application.Tests\Payslip.Application.Tests.csproj", "{3359495C-D79B-437D-8B40-45DCCAC845DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip.Application.Tests", "tests\Payslip.Application.Tests\Payslip.Application.Tests.csproj", "{3359495C-D79B-437D-8B40-45DCCAC845DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

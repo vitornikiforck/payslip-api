@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Payslip.Domain\Payslip.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Payslip.Domain\Payslip.Domain.csproj" />
   </ItemGroup>
 
 </Project>
