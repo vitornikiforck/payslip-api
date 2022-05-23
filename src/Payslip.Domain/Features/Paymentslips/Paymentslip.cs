@@ -25,6 +25,7 @@ namespace Payslip.Domain.Features.Paymentslips
             Launches = new List<Launch>();
             ReferenceMonth = DateTime.UtcNow.Month;
             Employee = employee;
+            GrossSalary = employee.GrossSalary;
             TotalDiscountValue = GetTotalDiscountValue();
             TotalDiscountValueNegative = GetTotalDiscountNegativeValue();
             NetSalary = GetNetSalary();
