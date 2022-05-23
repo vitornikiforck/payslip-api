@@ -8,11 +8,12 @@ namespace Payslip.Infra.Data.Features.Employees
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
+            builder.ToTable("Employees");
             builder.HasKey(e => e.Id);
             builder.Property(e => e.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(e => e.LastName).HasMaxLength(100).IsRequired();
             builder.Property(e => e.Department).HasMaxLength(30).IsRequired();
-            builder.Property(e => e.GrossSalary).HasPrecision(6, 2).IsRequired();
+            builder.Property(e => e.GrossSalary).HasPrecision(8, 2).IsRequired();
             builder.Property(e => e.AdmissionDate).IsRequired();
             builder.Property(e => e.HealthPlan).IsRequired();
             builder.Property(e => e.DentalPlan).IsRequired();

@@ -25,8 +25,6 @@ namespace Payslip.Infra.Data.Contexts
         {
             modelBuilder.ApplyConfiguration(new EmployeeEntityConfiguration());
 
-            modelBuilder.HasDefaultSchema("payslip");
-
             //OnModelCreating do EF para dar continuidade na criação do modelo
             base.OnModelCreating(modelBuilder);
         }

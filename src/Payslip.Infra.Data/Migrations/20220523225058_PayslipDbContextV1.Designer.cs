@@ -12,14 +12,13 @@ using Payslip.Infra.Data.Contexts;
 namespace Payslip.Infra.Data.Migrations
 {
     [DbContext(typeof(PayslipDbContext))]
-    [Migration("20220517224234_PayslipDbContextV1")]
+    [Migration("20220523225058_PayslipDbContextV1")]
     partial class PayslipDbContextV1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("payslip")
                 .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -43,7 +42,6 @@ namespace Payslip.Infra.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Document")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -52,8 +50,8 @@ namespace Payslip.Infra.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("GrossSalary")
-                        .HasPrecision(6, 2)
-                        .HasColumnType("decimal(6,2)");
+                        .HasPrecision(8, 2)
+                        .HasColumnType("decimal(8,2)");
 
                     b.Property<bool>("HealthPlan")
                         .HasColumnType("bit");
@@ -74,7 +72,7 @@ namespace Payslip.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees", "payslip");
+                    b.ToTable("Employees", (string)null);
                 });
 #pragma warning restore 612, 618
         }

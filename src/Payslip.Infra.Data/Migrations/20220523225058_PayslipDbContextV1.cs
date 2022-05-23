@@ -9,20 +9,16 @@ namespace Payslip.Infra.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "payslip");
-
             migrationBuilder.CreateTable(
                 name: "Employees",
-                schema: "payslip",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Document = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Document = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Department = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    GrossSalary = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
+                    GrossSalary = table.Column<decimal>(type: "decimal(8,2)", precision: 8, scale: 2, nullable: false),
                     AdmissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HealthPlan = table.Column<bool>(type: "bit", nullable: false),
                     DentalPlan = table.Column<bool>(type: "bit", nullable: false),
@@ -39,8 +35,7 @@ namespace Payslip.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Employees",
-                schema: "payslip");
+                name: "Employees");
         }
     }
 }
