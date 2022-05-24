@@ -1,8 +1,6 @@
-﻿using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Payslip.Application;
 
 namespace Payslip.Api.Extensions
 {
@@ -11,7 +9,6 @@ namespace Payslip.Api.Extensions
         public static void AddMVC(this IServiceCollection services)
         {
             services.AddMvcCore()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AppModule>())
                 .AddNewtonsoftJson(opt =>
                 {
                     opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

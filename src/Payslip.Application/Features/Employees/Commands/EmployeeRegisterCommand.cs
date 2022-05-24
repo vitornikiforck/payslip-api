@@ -4,7 +4,7 @@ using Payslip.Infra.Validations;
 
 namespace Payslip.Application.Features.Employees.Commands
 {
-    public class EmployeeRegisterCommand : IRequestWithResult<Guid>
+    public sealed record EmployeeRegisterCommand : IRequestWithResult<Guid>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,7 +16,7 @@ namespace Payslip.Application.Features.Employees.Commands
         public bool TransportantionVoucher { get; set; }
     }
 
-    public class EmployeeRegisterCommandValidator : AbstractValidator<EmployeeRegisterCommand>
+    public sealed class EmployeeRegisterCommandValidator : AbstractValidator<EmployeeRegisterCommand>
     {
         public EmployeeRegisterCommandValidator()
         {
@@ -46,11 +46,11 @@ namespace Payslip.Application.Features.Employees.Commands
                 .WithMessage("Informe um salário válido.");
 
             RuleFor(x => x.Department)
-            .NotNull()
-            .NotEmpty()
-            .WithMessage("Setor deve ser informado.")
-            .MaximumLength(100)
-            .WithMessage("Setor não deve ultrapassar 100 caracteres.");
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("Setor deve ser informado.")
+                .MaximumLength(100)
+                .WithMessage("Setor não deve ultrapassar 100 caracteres.");
         }
     }
 }

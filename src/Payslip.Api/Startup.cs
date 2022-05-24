@@ -24,6 +24,7 @@ namespace Payslip.Api
             );
 
             services.AddMediator();
+            services.AddFluentValidation();
             services.AddAutoMapper();
             services.AddCors();
             services.AddHealthChecksMiddleware<PayslipDbContext>();

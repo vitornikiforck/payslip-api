@@ -48,5 +48,21 @@ namespace Payslip.Infra.Data.Features.Employees
 
             return employeeCallback;
         }
+
+        /// <summary>
+        /// Atualiza os dados do Funcionário.
+        /// </summary>
+        /// <param name="employee">funcionário para ser atualizado</param>
+        /// <returns>O funcionário que foi atualizado</returns>
+        public async Task<Result<Exception, Employee>> UpdateAsync(Employee employee)
+        {
+            _context.Employees.Update(employee);
+            var saveChangesCallback = await Result.Run(() => _context.SaveChangesAsync());
+
+            if (saveChangesCallback.IsFailure)
+                return saveChangesCallback.Failure;
+
+            return employee;
+        }
     }
 }

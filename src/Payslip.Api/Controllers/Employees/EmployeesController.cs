@@ -58,5 +58,25 @@ namespace Payslip.Api.Controllers.Employees
         {
             return HandleCommand(await _mediator.Send(command));
         }
+
+        /// <summary>
+        /// Remove um Funcionário.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        ///     DELETE /api/Employees/7abb9914-5c45-47a9-a150-b03bf061e2b7
+        ///
+        /// </remarks>
+        [ProducesResponseType(typeof(Core.Results.Unit), 200)]
+        [ProducesResponseType(typeof(ExceptionPayload), 400)]
+        [ProducesResponseType(typeof(ExceptionPayload), 404)]
+        [ProducesResponseType(typeof(ExceptionPayload), 500)]
+        [HttpDelete]
+        [Route("{employeeId}")]
+        public async Task<IActionResult> DeleteAsync(Guid employeeId)
+        {
+            return HandleCommand(await _mediator.Send(new EmployeeRemoveCommand { EmployeeId = employeeId }));
+        }
     }
 }
