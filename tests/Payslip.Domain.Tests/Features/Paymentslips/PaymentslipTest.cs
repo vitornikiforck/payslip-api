@@ -242,10 +242,10 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             //Assert
             paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -262,9 +262,9 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -282,9 +282,9 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -303,8 +303,8 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -322,9 +322,9 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -343,8 +343,8 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -362,9 +362,9 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionINSS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
         }
 
         [Test]
@@ -383,8 +383,8 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
         }
 
         [Test]
@@ -404,8 +404,8 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -425,8 +425,8 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
         }
 
         [Test]
@@ -446,8 +446,8 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionFGTS).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().Be(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Should().BeNull();
+            paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Should().BeNull();
         }
 
         [Test]
@@ -468,7 +468,7 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Should().BeNull();
         }
 
         [Test]
@@ -489,7 +489,7 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
         }
 
         [Test]
@@ -510,7 +510,7 @@ namespace Payslip.Domain.Tests.Features.Paymentslips
             paymentslip.Launches.Find(l => l.Description == _descriptionIRRF).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionHealthPlan).Value.Should().BeGreaterThan(0);
             paymentslip.Launches.Find(l => l.Description == _descriptionTransportationVoucher).Value.Should().BeGreaterThan(0);
-            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Value.Should().Be(0);
+            paymentslip.Launches.Find(l => l.Description == _descriptionDentalPlan).Should().BeNull();
         }
 
         [Test]

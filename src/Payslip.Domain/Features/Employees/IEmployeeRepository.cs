@@ -6,5 +6,6 @@ namespace Payslip.Domain.Features.Employees
     {
         Task<Result<Exception, Employee>> AddAsync(Employee employee);
         Task<Result<Exception, Employee>> GetById(Guid employeeId);
+        Task<Result<Exception, Employee>> UpdateAsync(Employee employee);
     }
 }

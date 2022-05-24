@@ -51,11 +51,11 @@ namespace Payslip.Domain.Features.Paymentslips
         private void GenerateLaunches()
         {
             Launches.Add(new Launch(LaunchType.Discount, _discountINSS));
-            Launches.Add(new Launch(LaunchType.Discount, _discountIRRF));
             Launches.Add(new Launch(LaunchType.Discount, _discountFGTS));
-            Launches.Add(new Launch(LaunchType.Discount, _discountHealthPlan));
-            Launches.Add(new Launch(LaunchType.Discount, _discountDentalPlan));
-            Launches.Add(new Launch(LaunchType.Discount, _discountTransportationVoucher));
+            if (_discountIRRF.Value > 0) Launches.Add(new Launch(LaunchType.Discount, _discountIRRF));
+            if (_discountHealthPlan.Value > 0) Launches.Add(new Launch(LaunchType.Discount, _discountHealthPlan));
+            if(_discountDentalPlan.Value > 0) Launches.Add(new Launch(LaunchType.Discount, _discountDentalPlan));
+            if(_discountTransportationVoucher.Value > 0) Launches.Add(new Launch(LaunchType.Discount, _discountTransportationVoucher));
         }
     }
 }
