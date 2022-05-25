@@ -8,6 +8,7 @@
 - MediatR
 - AutoMapper
 - FluentValidation 
+- Autofac
 - EF Core
 - Moq
 - NUnit
@@ -51,6 +52,7 @@ Opção 2: Alterar a ConnectionString `Data Source=host.docker.internal;Initial 
 - [Lidar com a complexidade dos negócios em um microsserviço com padrões DDD e CQRS](https://docs.microsoft.com/pt-br/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/)
 - [MediatR](https://github.com/jbogard/MediatR/wiki)
 - [FluentValidation](https://fluentvalidation.net/)
+- [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
 - [AutoMapper](https://docs.automapper.org/en/latest/)
 - [Moq](https://documentation.help/Moq/)
 
