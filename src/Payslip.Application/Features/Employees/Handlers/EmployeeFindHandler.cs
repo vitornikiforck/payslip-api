@@ -1,5 +1,4 @@
-﻿
-using MediatR;
+﻿using MediatR;
 using Payslip.Application.Features.Employees.Queries;
 using Payslip.Core.Results;
 using Payslip.Domain.Features.Employees;

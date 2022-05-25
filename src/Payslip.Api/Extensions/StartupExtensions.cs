@@ -2,21 +2,22 @@
 {
     public static class StartupExtensions
     {
-        public static WebApplicationBuilder UseStartup<T>(this WebApplicationBuilder WebAppBuilder) where T : IStartup
+        public static WebApplicationBuilder UseStartup<T>(this WebApplicationBuilder appBuilder) where T : IStartup
         {
-            var startup = Activator.CreateInstance(typeof(T), WebAppBuilder.Configuration) as IStartup;
+            var startup = Activator.CreateInstance(typeof(T), appBuilder.Configuration) as IStartup;
 
             if (startup == null)
                 throw new ArgumentException("Null Startup class");
 
-            startup.ConfigureServices(WebAppBuilder.Services);
+            appBuilder.AddAutofac();
+            startup.ConfigureServices(appBuilder.Services);
 
-            var app = WebAppBuilder.Build();
+            var app = appBuilder.Build();
             startup.Configure(app, app.Environment);
 
             app.Run();
 
-            return WebAppBuilder;
+            return appBuilder;
         }
     }
 }

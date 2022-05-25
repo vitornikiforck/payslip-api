@@ -1,19 +1,21 @@
 ﻿using FluentValidation;
 using MediatR;
+using Payslip.Application.Behaviours;
+using Payslip.Core.Results;
 
 namespace Payslip.Api.Behaviours
 {
-    public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-            where TRequest : IRequest<TResponse>
+    public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, Result<Exception,TResponse>>
+            where TRequest : IRequestWithResult<TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public ValidationPipeline(IEnumerable<IValidator<TRequest>> validators)
+        public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators)
         {
             _validators = validators;
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<Result<Exception, TResponse>> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<Result<Exception, TResponse>> next)
         {
             if (_validators.Any())
             {
@@ -25,9 +27,10 @@ namespace Payslip.Api.Behaviours
 
                 if (failures.Any())
                 {
-                    throw new ValidationException(failures);
+                    return new ValidationException(failures);
                 }
             }
+
             return await next();
         }
     }
