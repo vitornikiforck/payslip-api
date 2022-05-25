@@ -5,6 +5,11 @@ using Payslip.Domain.Features.Employees;
 
 namespace Payslip.Application.Features.Employees.Queries
 {
+    /// <summary>
+    /// 
+    /// Representa uma consulta por id de um funcionário na base de dados
+    ///  
+    /// </summary>
     public class EmployeeGetQuery : IRequest<Result<Exception, Employee>>
     {
         public Guid EmployeeId { get; set; }

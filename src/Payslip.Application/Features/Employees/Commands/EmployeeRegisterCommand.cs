@@ -4,6 +4,11 @@ using Payslip.Infra.Validations;
 
 namespace Payslip.Application.Features.Employees.Commands
 {
+    /// <summary>
+    ///
+    /// Representa o comando (dados necessários) para registrar um novo funcionário.
+    ///
+    /// </summary>
     public sealed record EmployeeRegisterCommand : IRequestWithResult<Guid>
     {
         public string FirstName { get; set; }
