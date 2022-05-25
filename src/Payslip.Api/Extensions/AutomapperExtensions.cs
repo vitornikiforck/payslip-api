@@ -9,7 +9,7 @@ namespace Payslip.Api.Extensions
             Mapper.Reset();
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfiles(typeof(Program));
+                cfg.AddProfiles(typeof(Startup));
                 cfg.AddProfiles(typeof(Application.AppModule));
             });
 

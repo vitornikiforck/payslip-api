@@ -23,18 +23,6 @@ namespace Payslip.Api.Controllers.Common
             return callback.IsFailure ? HandleFailure(callback.Failure) : Ok(Mapper.Map<TSource, TResult>(callback.Success));
         }
 
-        public async Task<IActionResult> HandleQueryable<TSource, TResult>(Result<Exception, IQueryable<TSource>> callback)
-        {
-            if (callback.IsFailure)
-                return HandleFailure(callback.Failure);
-
-            var query = callback.Success;
-
-            var result = query.AsQueryable().ProjectTo<TResult>();
-
-            return Ok(await result.ToListAsync());
-        }
-
         public IActionResult HandleFailure<T>(T exceptionToHandle) where T : Exception
         {
             if (exceptionToHandle is ValidationException)

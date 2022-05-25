@@ -1,5 +1,12 @@
 ﻿namespace Payslip.Api.Controllers.Employees.ViewModels
 {
+    /// <summary>
+    /// 
+    /// Representa o resultado de uma consulta de funcionário da base de dados
+    /// 
+    /// É usado quando se precisa consultar mais dados sobre o funcionário
+    ///  
+    /// </summary>
     public class EmployeeDetailViewModel
     {
         public string FirstName { get; set; }

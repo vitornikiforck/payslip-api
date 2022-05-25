@@ -17,14 +17,10 @@ namespace Payslip.Api
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Payslip.Api", Version = "v1" })
             );
-
             services.AddMediator();
-            services.AddFluentValidation();
             services.AddAutoMapper();
             services.AddCors();
             services.AddHealthChecksMiddleware<PayslipDbContext>();

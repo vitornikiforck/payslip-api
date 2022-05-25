@@ -1,43 +1,50 @@
-﻿using Payslip.Core.Exceptions;
+﻿using FluentValidation;
+using Payslip.Core.Exceptions;
 
 namespace Payslip.Api.Exceptions
 {
     public class ExceptionPayload
     {
-        public ExceptionPayload(int status, string error, string message, Exception exception)
+        public ExceptionPayload(string error, int errorCode, string message, List<ValidationFailure> failures = null)
         {
-            Status = status;
             Error = error;
-            Message = message;
-            _exception = exception;
+            ErrorCode = errorCode;
+            ErrorMessage = message;
+            Failures = failures;
         }
-
-        private Exception _exception;
-        public int Status { get; set; }
 
         public string Error { get; set; }
 
-        public string Message { get; set; }
+        public int ErrorCode { get; set; }
 
-        public Exception GetException() => _exception;
+        public string ErrorMessage { get; set; }
+
+        public List<ValidationFailure> Failures { get; set; }
 
         public static ExceptionPayload New<T>(T exception) where T : Exception
         {
-            int statusCode;
             string error;
+            int errorCode;
+            List<ValidationFailure> failures = null;
 
             if (exception is BussinessException)
             {
-                statusCode = (exception as BussinessException).StatusCodes.GetHashCode();
                 error = (exception as BussinessException).StatusCodes.ToString();
+                errorCode = (exception as BussinessException).StatusCodes.GetHashCode();
+            }
+            if(exception is ValidationException)
+            {
+                error = Core.Exceptions.StatusCodes.BadRequest.ToString();
+                errorCode = (int)Core.Exceptions.StatusCodes.BadRequest;
+                failures = new ValidationFailureMapper().Map((exception as ValidationException).Errors);
             }
             else
             {
-                statusCode = Core.Exceptions.StatusCodes.Unhandled.GetHashCode();
                 error = Core.Exceptions.StatusCodes.Unhandled.ToString();
+                errorCode = Core.Exceptions.StatusCodes.Unhandled.GetHashCode();
             }
 
-            return new ExceptionPayload(statusCode, error, exception.Message, exception);
+            return new ExceptionPayload(error, errorCode, exception.Message, failures);
         }
     }
 }

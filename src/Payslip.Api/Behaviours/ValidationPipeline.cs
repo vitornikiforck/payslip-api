@@ -1,33 +1,33 @@
 ﻿using FluentValidation;
 using MediatR;
-using Payslip.Application.Behaviours;
-using Payslip.Core.Results;
 
 namespace Payslip.Api.Behaviours
 {
-    public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, Result<Exception, TResponse>>
-            where TRequest : IRequestWithResult<TResponse>
+    public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+            where TRequest : IRequest<TResponse>
     {
-        private readonly IValidator<TRequest>[] _validators;
+        private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public ValidationPipeline(IValidator<TRequest>[] validators)
+        public ValidationPipeline(IEnumerable<IValidator<TRequest>> validators)
         {
             _validators = validators;
         }
 
-        public async Task<Result<Exception, TResponse>> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<Result<Exception, TResponse>> next)
+        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
-            var failures = _validators
-                .Select(v => v.Validate(request))
-                .SelectMany(result => result.Errors)
-                .Where(error => error != null)
-                .ToList();
-
-            if (failures.Any())
+            if (_validators.Any())
             {
-                return new ValidationException(failures);
-            }
+                var failures = _validators
+                    .Select(v => v.Validate(request))
+                    .SelectMany(result => result.Errors)
+                    .Where(error => error != null)
+                    .ToList();
 
+                if (failures.Any())
+                {
+                    throw new ValidationException(failures);
+                }
+            }
             return await next();
         }
     }

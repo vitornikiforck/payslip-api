@@ -5,6 +5,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Payslip.Api.Controllers.Launches
 {
+    /// <summary>
+    /// 
+    /// Representa o resultado da criação dos lançamentos de um contracheque
+    /// 
+    /// É usado quando se precisa dos dados sobre de lançamentos do contracheque
+    ///  
+    /// </summary>
     public class LauncheDetailViewModel
     {
         [EnumDataType(typeof(LaunchType))]
