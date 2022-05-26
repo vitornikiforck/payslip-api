@@ -50,7 +50,7 @@ namespace Payslip.Domain.Features.Employees
         /// <summary>
         /// Funcionário Removido
         /// </summary>
-        public bool IsRemoved { get; set; }
+        public bool IsRemoved { get; private set; }
 
         public Employee()
         {
@@ -61,7 +61,7 @@ namespace Payslip.Domain.Features.Employees
         /// <summary>
         /// Atualiza data de modificação e seta o funcionário como removido
         /// </summary>
-        public virtual void SetAsRemoved()
+        public void SetAsRemoved()
         {
             SetLastModification();
             IsRemoved = true;
@@ -70,6 +70,6 @@ namespace Payslip.Domain.Features.Employees
         /// <summary>
         /// Seta a data de atualização do cliente para data e hora atual
         /// </summary>
-        public virtual void SetLastModification() => UpdateAt = DateTime.UtcNow;
+        public void SetLastModification() => UpdateAt = DateTime.UtcNow;
     }
 }

@@ -40,7 +40,9 @@ namespace Payslip.Infra.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Document")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

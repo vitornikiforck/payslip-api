@@ -12,6 +12,7 @@ namespace Payslip.Infra.Data.Features.Employees
             builder.HasKey(e => e.Id);
             builder.Property(e => e.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(e => e.LastName).HasMaxLength(100).IsRequired();
+            builder.Property(e => e.Document).HasMaxLength(14).IsRequired();
             builder.Property(e => e.Department).HasMaxLength(30).IsRequired();
             builder.Property(e => e.GrossSalary).HasPrecision(8, 2).IsRequired();
             builder.Property(e => e.AdmissionDate).IsRequired();

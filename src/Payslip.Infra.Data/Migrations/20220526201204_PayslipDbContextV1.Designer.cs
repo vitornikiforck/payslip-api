@@ -12,7 +12,7 @@ using Payslip.Infra.Data.Contexts;
 namespace Payslip.Infra.Data.Migrations
 {
     [DbContext(typeof(PayslipDbContext))]
-    [Migration("20220523225058_PayslipDbContextV1")]
+    [Migration("20220526201204_PayslipDbContextV1")]
     partial class PayslipDbContextV1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,9 @@ namespace Payslip.Infra.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Document")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
