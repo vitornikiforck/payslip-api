@@ -4,6 +4,9 @@ jobs:
   build-and-test:
     docker:
       - image: vitornikiforck/payslip:latest
+        auth:
+          username: $dockerhub_user
+          password: $dockerhub_password 
     steps:
       - checkout
       - run:
