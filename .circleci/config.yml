@@ -1,20 +1,20 @@
 version: 2.1
-
-jobs:
-  build-and-test:
+executors:
+  docker-payslip-executor:
     docker:
       - image: vitornikiforck/payslip:latest
         auth:
-          username: $dockerhub_user
-          password: $dockerhub_password 
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+jobs:
+  docker-payslip:
+    executor: docker-payslip-executor
     steps:
       - checkout
-      - run:
-          working_directory: ~/tests
-          name: Run tests
-          command: |
-            dotnet test
+      - run: |
+          # echo Hello, World!
+
 workflows:
   ci:
     jobs:
-      - build-and-test
+      - docker-payslip
