@@ -1,0 +1,31 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+    includeSourceTags: true
+    includeLatestTag: true
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Push services'
+    includeSourceTags: true
+    includeLatestTag: true
