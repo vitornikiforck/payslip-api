@@ -3,7 +3,18 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="FluentValidation" Version="11.0.1" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Payslip.Core\Payslip.Core.csproj" />
+    <ProjectReference Include="..\Payslip.Domain\Payslip.Domain.csproj" />
+    <ProjectReference Include="..\Payslip.Infra\Payslip.Infra.csproj" />
+  </ItemGroup>
 
 </Project>

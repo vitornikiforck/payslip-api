@@ -1,25 +1,6 @@
-var builder = WebApplication.CreateBuilder(args);
+using Payslip.Api;
+using Payslip.Api.Extensions;
 
-// Add services to the container.
+WebApplication.CreateBuilder(args)
+.UseStartup<Startup>();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

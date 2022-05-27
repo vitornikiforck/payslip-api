@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    container_name: sql-server-payslip
+    restart: always 
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
