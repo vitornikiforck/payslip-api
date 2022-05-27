@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: vitornikiforck/payslip:latest
+    steps:
+      - checkout
+      - run:
+          working_directory: ~/tests
+          name: Run tests
+          command: |
+            dotnet test
+workflows:
+  ci:
+    jobs:
+      - build-and-test
