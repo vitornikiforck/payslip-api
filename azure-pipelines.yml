@@ -10,6 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: UseDotNet@2
+  inputs:
+     packageType: 'sdk'
+     version: '6'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/Payslip[Tt]ests/.csproj'
+    publishTestResults: true
+    arguments: '--configuration $(buildConfiguration)'
 - task: DockerInstaller@0
   inputs:
     dockerVersion: '17.09.0-ce'
