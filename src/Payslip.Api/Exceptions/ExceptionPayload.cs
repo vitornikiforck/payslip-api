@@ -32,7 +32,7 @@ namespace Payslip.Api.Exceptions
                 error = (exception as BussinessException).StatusCodes.ToString();
                 errorCode = (exception as BussinessException).StatusCodes.GetHashCode();
             }
-            if(exception is ValidationException)
+            else if(exception is ValidationException)
             {
                 error = Core.Exceptions.StatusCodes.BadRequest.ToString();
                 errorCode = (int)Core.Exceptions.StatusCodes.BadRequest;
