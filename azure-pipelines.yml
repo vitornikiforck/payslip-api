@@ -15,9 +15,10 @@ steps:
      packageType: 'sdk'
      version: '6.x'
 - task: DotNetCoreCLI@2
+  displayName: tests
   inputs:
     command: test
-    projects: '**/Payslip[Tt]ests/.csproj'
+    projects: '**/Payslip[Tt]ests/*.csproj'
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
 - task: DockerInstaller@0
