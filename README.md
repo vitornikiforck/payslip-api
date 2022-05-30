@@ -43,7 +43,12 @@ services:
     ports:
       - 9000:80
 ```
+#
 
+**Azure Pipeline Builds**
+- https://dev.azure.com/vitornikiforck/Payslip/_build
+
+#
 
 **Tecnologias utilizadas**
 
