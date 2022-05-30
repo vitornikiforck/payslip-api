@@ -15,15 +15,10 @@ services:
   payslip-api:
     image: vitornikiforck/payslip:latest
     container_name: payslip-api
+    restart: always
     environment:
-      - ASPNETCORE_URLS=https://+;http://+
-      - ASPNETCORE_HTTPS_PORT=9001
+      - ASPNETCORE_URLS=http://+
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=123
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/var/https/aspnetapp.pfx
       - AppSettings__ConnectionString=Data Source=host.docker.internal; Initial Catalog=PayslipDbContext; User=sa; Password=P@ssw0rd; MultipleActiveResultSets=true
     ports:
       - 9000:80
-      - 9001:443
-    volumes:
-      - ./configs:/var/https
