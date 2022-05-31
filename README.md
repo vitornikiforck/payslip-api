@@ -2,7 +2,11 @@
 
 **Executando o projeto**
 
-- Necessário ter instalado Visual Studio 2019/2022
+Necessário ter instalado:
+
+- Visual Studio 2019/2022
+- Docker
+- SQL Server
 
 **Local**
 
@@ -10,6 +14,7 @@ Opção 1:
 - Navegar até o local onde foi clonado o projeto
 - Abrir a solução Payslip.sln
 - Alterar a ConnectionString `Data Source=host.docker.internal;Initial Catalog=LocadoraDbContext;User ID=sa;Password=L@c@d@r@123;MultipleActiveResultSets=true` localizada no arquivo appsettings.json
+- Executar o projeto Payslip.Api
 
 Opção 2:
 - Navegar até o local onde foi clonado o projeto
@@ -43,10 +48,12 @@ services:
     ports:
       - 9000:80
 ```
+- Acessar em ```http://localhost:9000/swagger```
+
 #
 
 **Azure Pipeline Builds**
-- https://dev.azure.com/vitornikiforck/Payslip/_build
+- [Payslip API Builds](https://dev.azure.com/vitornikiforck/Payslip/_build)
 
 #
 
@@ -71,7 +78,6 @@ services:
 # Referências 
 - [Asp Net Core 6.0](https://docs.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-6.0?view=aspnetcore-6.0)
 - [Domain Driven Design](https://martinfowler.com/tags/domain%20driven%20design.html)
-- [Lidar com a complexidade dos negócios em um microsserviço com padrões DDD e CQRS](https://docs.microsoft.com/pt-br/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/)
 - [MediatR](https://github.com/jbogard/MediatR/wiki)
 - [FluentValidation](https://fluentvalidation.net/)
 - [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
