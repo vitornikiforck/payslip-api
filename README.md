@@ -1,5 +1,9 @@
 # API Contracheque
 
+Aplicação responsável por criar o extrato da folha salarial dos funcionários. Esse
+extrato deve expôr o salário líquido do funcionário e todos os seus descontos
+discriminados.
+
 **Executando o projeto**
 
 Necessário ter instalado:
