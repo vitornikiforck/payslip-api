@@ -7,9 +7,8 @@ pool:
 steps:
 - task: UseDotNet@2
   inputs:
-    packageType: 'sdk'
-    version: '6.x'
-
+     packageType: 'sdk'
+     version: '6.x'
 - task: DotNetCoreCLI@2
   displayName: tests
   inputs:
@@ -17,11 +16,3 @@ steps:
     projects: '**/*Payslip*[Tt]ests/*.csproj'
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'Vitor Nikiforck Docker Hub'
-    repository: 'vitornikiforck/payslip:$(Build.BuildId)'
-    command: 'buildAndPush'
-    Dockerfile: 'src/Payslip.Api/Dockerfile'
-    tags: 'latest'
