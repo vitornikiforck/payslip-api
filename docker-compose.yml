@@ -7,7 +7,6 @@ services:
     build:
       context: ./
       dockerfile: ./src/Payslip.Api/Dockerfile
-    container_name: payslip-api
     ports:
       - 80:80
       - 443:443
