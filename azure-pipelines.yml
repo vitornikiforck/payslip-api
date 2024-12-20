@@ -9,7 +9,7 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '6.x'
-
+    
 - task: DotNetCoreCLI@2
   displayName: tests
   inputs:
@@ -18,40 +18,9 @@ steps:
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
 
-- script: |
-    sudo apt-get update
-    sudo apt-get install -y docker.io
-    sudo apt-get install -y docker-compose
-    docker --version
-    docker-compose version
-  displayName: Install Docker and Docker Compose
-
-- script: |
-    docker-compose -f docker-compose.yml config --project-name payslip-api
-  displayName: Debug Docker Compose Project Name
-
-- task: DockerCompose@1
-  displayName: Build services
+- task: Docker@2
   inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
-    dockerComposeFile: 'docker-compose.yml'
-    action: 'Build services'
-    arguments: '--project-name payslip-api'
-    includeSourceTags: true
-    includeLatestTag: true
-
-- task: DockerCompose@1
-  displayName: Push services
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
-    dockerComposeFile: 'docker-compose.yml'
-    action: 'Push services'
-    arguments: '--project-name payslip-api'
-    includeSourceTags: true
-    includeLatestTag: true
-
-- script: |
-    env
-  displayName: Check Environment Variables
+    containerRegistry: 'Vitor Nikiforck Docker Hub'
+    repository: 'vitornikiforck/payslip'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
