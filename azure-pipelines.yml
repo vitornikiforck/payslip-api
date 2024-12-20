@@ -18,7 +18,6 @@ steps:
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
 
-# Instala Docker e Docker Compose usando um script no Ubuntu
 - script: |
     sudo apt-get update
     sudo apt-get install -y docker.io
@@ -27,12 +26,16 @@ steps:
     docker compose version
   displayName: Install Docker and Docker Compose
 
+- script: |
+    docker compose -f docker-compose.yml config --project-name payslip-api
+  displayName: Debug Docker Compose Project Name
+
 - task: DockerCompose@1
   displayName: Build services
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
-    dockerComposeFile: '**/docker-compose.yml'
+    dockerComposeFile: 'docker-compose.yml'
     action: 'Build services'
     arguments: '--project-name payslip-api'
     includeSourceTags: true
@@ -43,8 +46,12 @@ steps:
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
-    dockerComposeFile: '**/docker-compose.yml'
+    dockerComposeFile: 'docker-compose.yml'
     action: 'Push services'
     arguments: '--project-name payslip-api'
     includeSourceTags: true
     includeLatestTag: true
+
+- script: |
+    env
+  displayName: Check Environment Variables
