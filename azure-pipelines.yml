@@ -27,8 +27,9 @@ steps:
   displayName: Install Docker and Docker Compose
 
 - script: |
-    docker compose -f docker-compose.yml config --project-name payslip-api
+    docker compose -f docker-compose.yml config -p payslip-api
   displayName: Debug Docker Compose Project Name
+
 
 - task: DockerCompose@1
   displayName: Build services
