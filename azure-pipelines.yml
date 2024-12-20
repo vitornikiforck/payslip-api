@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -12,8 +7,9 @@ pool:
 steps:
 - task: UseDotNet@2
   inputs:
-     packageType: 'sdk'
-     version: '6.x'
+    packageType: 'sdk'
+    version: '6.x'
+
 - task: DotNetCoreCLI@2
   displayName: tests
   inputs:
@@ -21,10 +17,15 @@ steps:
     projects: '**/*Payslip*[Tt]ests/*.csproj'
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
+
+# Atualiza para instalar Docker Compose v2 junto com o Docker mais recente
 - task: DockerInstaller@0
   inputs:
-    dockerVersion: '17.09.0-ce'
-- task: DockerCompose@0
+    dockerVersion: 'latest'
+
+# Substitui DockerCompose@0 por DockerCompose@1
+- task: DockerCompose@1
+  displayName: Build services
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
@@ -32,7 +33,9 @@ steps:
     action: 'Build services'
     includeSourceTags: true
     includeLatestTag: true
-- task: DockerCompose@0
+
+- task: DockerCompose@1
+  displayName: Push services
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
