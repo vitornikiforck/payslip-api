@@ -18,12 +18,15 @@ steps:
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
 
-# Atualiza para instalar Docker Compose v2 junto com o Docker mais recente
-- task: DockerInstaller@0
-  inputs:
-    dockerVersion: 'latest'
+# Instala Docker e Docker Compose usando um script no Ubuntu
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y docker.io
+    sudo apt-get install -y docker-compose
+    docker --version
+    docker compose version
+  displayName: Install Docker and Docker Compose
 
-# Substitui DockerCompose@0 por DockerCompose@1
 - task: DockerCompose@1
   displayName: Build services
   inputs:
