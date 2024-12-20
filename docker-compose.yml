@@ -1,7 +1,4 @@
 version: "3.7"
-
-x-settings:
-  projectName: payslip # Nome explícito do projeto
   
 services:
   payslip-api:
