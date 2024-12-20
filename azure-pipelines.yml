@@ -34,7 +34,7 @@ steps:
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Build services'
-    arguments: '--project-name payslip' # Define explicitamente o nome do projeto
+    arguments: '--project-name payslip-api'
     includeSourceTags: true
     includeLatestTag: true
 
@@ -45,6 +45,6 @@ steps:
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Push services'
-    arguments: '--project-name payslip' # Define explicitamente o nome do projeto
+    arguments: '--project-name payslip-api'
     includeSourceTags: true
     includeLatestTag: true
