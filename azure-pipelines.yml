@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -12,8 +7,9 @@ pool:
 steps:
 - task: UseDotNet@2
   inputs:
-     packageType: 'sdk'
-     version: '6.x'
+    packageType: 'sdk'
+    version: '6.x'
+
 - task: DotNetCoreCLI@2
   displayName: tests
   inputs:
@@ -21,22 +17,34 @@ steps:
     projects: '**/*Payslip*[Tt]ests/*.csproj'
     publishTestResults: true
     arguments: '--configuration $(buildConfiguration)'
-- task: DockerInstaller@0
-  inputs:
-    dockerVersion: '17.09.0-ce'
-- task: DockerCompose@0
+
+# Instala Docker e Docker Compose usando um script no Ubuntu
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y docker.io
+    sudo apt-get install -y docker-compose
+    docker --version
+    docker compose version
+  displayName: Install Docker and Docker Compose
+
+- task: DockerCompose@1
+  displayName: Build services
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Build services'
+    arguments: '--project-name payslip-api'
     includeSourceTags: true
     includeLatestTag: true
-- task: DockerCompose@0
+
+- task: DockerCompose@1
+  displayName: Push services
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Vitor Nikiforck Docker Hub'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Push services'
+    arguments: '--project-name payslip-api'
     includeSourceTags: true
     includeLatestTag: true
